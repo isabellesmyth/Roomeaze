@@ -30,16 +30,16 @@ class Profile: NSObject{
         self.documentID = documentID
     }
     convenience override init(){
-        self.init(pBio: "", groupName: "", pImage: "0", pSize: "", pOpen: "", postingUserID: "", documentID: "")
+        self.init(pBio: "", groupName: "", pImage: UIImage(), pSize: "", pOpen: "", postingUserID: "", documentID: "")
         
     }
     convenience init(dictionary: [String: Any]) {
         let pBio = dictionary["pBio"] as! String? ?? ""
         let groupName = dictionary["groupName"] as! String? ?? ""
-        let pImage = dictionary["pImage"] as! UIImage?
+        let pImage = dictionary["pImage"] as! UIImage? ?? nil
         let pSize = dictionary["pSize"] as! String? ?? ""
         let pOpen = dictionary["pOpen"] as! String? ?? ""
         let postingUserID = dictionary["postingUserID"] as! String? ?? ""
-        self.init(pBio: pBio, groupName: groupName, pImage: pImage, pSize: pSize, pOpen: pOpen, postingUserID: postingUserID, documentID: "")
+        self.init(pBio: pBio, groupName: groupName, pImage: pImage!, pSize: pSize, pOpen: pOpen, postingUserID: postingUserID, documentID: "")
     }
 }

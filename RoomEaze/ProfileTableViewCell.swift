@@ -16,8 +16,15 @@ class ProfileTableViewCell: UITableViewCell {
     @IBOutlet weak var numberNeeded: UILabel!
     @IBOutlet weak var peopleNeeded: UILabel!
     @IBOutlet weak var cardView: UIView!
-
-           
+    var profile: Profile!
+    func configureCell(profile: Profile) {
+        
+        bio.text = profile.pBio
+        groupName.text = profile.groupName
+        numberNeeded.text = profile.pSize
+        peopleNeeded.text = profile.pOpen
+        
+    }
         
 
 

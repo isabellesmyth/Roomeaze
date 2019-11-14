@@ -14,8 +14,7 @@ class FirstViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
 
-   var pArrays = [Profile]()
-    pArrays.append(Profile(pBio: "We love shopping!", groupName: "The Perfectionists", pImage: UIImage(named: "1")!, pSize: "4", pOpen: "2", postingUserID: "123", documentID: "123"))
+    var pArrays = [Profile]()
 
     
     
@@ -28,10 +27,12 @@ class FirstViewController: UIViewController {
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
+        pArrays.append(Profile(pBio: "We love shopping!", groupName: "The Perfectionists", pImage: UIImage(named: "1")!, pSize: "4", pOpen: "2", postingUserID: "123", documentID: "123"))
+
+        
+        
         
     }
-    
-    
     
     
 }
@@ -39,18 +40,13 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! Profile
-        
-            profile.pBio.text = pArray[indexPath.row].pBio
-            //profile.pImage. = cell.pArray[indexPath.row].pImage
-            profile.groupName.text = pArray[indexPath.row].groupName
-            profile.numberNeeded.text = pArray[indexPath.row].pPNum
-            profile.peopleNeeded.text = pArray[indexPath.row].pPNeeded
-            profile.pBio.isEditable = false
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ProfileTableViewCell
+            
+        cell.configureCell(profile: pArrays[indexPath.row])
         cell.cardView.applyConfig(for: indexPath, numberOfCellsInSection: tableView.numberOfRows(inSection: indexPath.section))
         if cell.numberNeeded.text == "0" {
             cell.numberNeeded.isHidden = true
