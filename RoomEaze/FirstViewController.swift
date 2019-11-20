@@ -7,32 +7,27 @@
 //
 
 import UIKit
-
+var pArrays = [Profile]()
 class FirstViewController: UIViewController {
 
 
     
     @IBOutlet weak var tableView: UITableView!
+    var profiles: Profiles!
+    
 
-    var pArrays = [Profile]()
-
     
-    
-    
-  
- 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        profiles = Profiles()
+        print("****profiles \(profiles.profileArray)")
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
-        pArrays.append(Profile(pBio: "We love shopping!", groupName: "The Perfectionists", pImage: UIImage(named: "1")!, pSize: "4", pOpen: "2", postingUserID: "123", documentID: "123"))
 
-        
-        
-        
+    
     }
+    
     
     
 }
@@ -40,14 +35,15 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return profiles.profileArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ProfileTableViewCell
-            
-        cell.configureCell(profile: pArrays[indexPath.row])
+        
         cell.cardView.applyConfig(for: indexPath, numberOfCellsInSection: tableView.numberOfRows(inSection: indexPath.section))
+        print("********EWWEWEE \(cell.bio.text) \(cell.bio.layoutMargins)")
+        cell.configureCell(profile: profiles.profileArray[indexPath.row])
         if cell.numberNeeded.text == "0" {
             cell.numberNeeded.isHidden = true
         }
@@ -55,8 +51,6 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
             cell.numberNeeded.isHidden = false
         }
         cell.cardView.roundCorners(cornerRadius: 20.0)
-        
-        
         return cell
     }
     

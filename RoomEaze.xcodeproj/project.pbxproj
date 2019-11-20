@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		746D4E112384BE92002F1BB8 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746D4E102384BE92002F1BB8 /* ProfileTableViewCell.swift */; };
 		7470603C237A518D00E5452F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7470603B237A518D00E5452F /* AppDelegate.swift */; };
 		7470603E237A518D00E5452F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7470603D237A518D00E5452F /* SceneDelegate.swift */; };
 		74706040237A518D00E5452F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7470603F237A518D00E5452F /* ViewController.swift */; };
@@ -18,12 +19,13 @@
 		74706058237DBDB300E5452F /* GroupSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74706057237DBDB300E5452F /* GroupSignUpViewController.swift */; };
 		7470605A237DBE5D00E5452F /* NextStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74706059237DBE5D00E5452F /* NextStepViewController.swift */; };
 		7470605C237DC57000E5452F /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7470605B237DC57000E5452F /* FilterViewController.swift */; };
-		7470605E237DCC4200E5452F /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7470605D237DCC4200E5452F /* ProfileTableViewCell.swift */; };
 		74706060237DCC8800E5452F /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7470605F237DCC8800E5452F /* Profile.swift */; };
 		74706062237DFE6B00E5452F /* Profiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74706061237DFE6B00E5452F /* Profiles.swift */; };
+		747060642382048600E5452F /* IndividualSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747060632382048600E5452F /* IndividualSignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		746D4E102384BE92002F1BB8 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileTableViewCell.swift; path = ../ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		74706038237A518D00E5452F /* RoomEaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoomEaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7470603B237A518D00E5452F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7470603D237A518D00E5452F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,9 +39,9 @@
 		74706057237DBDB300E5452F /* GroupSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSignUpViewController.swift; sourceTree = "<group>"; };
 		74706059237DBE5D00E5452F /* NextStepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextStepViewController.swift; sourceTree = "<group>"; };
 		7470605B237DC57000E5452F /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
-		7470605D237DCC4200E5452F /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		7470605F237DCC8800E5452F /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		74706061237DFE6B00E5452F /* Profiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profiles.swift; sourceTree = "<group>"; };
+		747060632382048600E5452F /* IndividualSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualSignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 		7470603A237A518D00E5452F /* RoomEaze */ = {
 			isa = PBXGroup;
 			children = (
+				746D4E102384BE92002F1BB8 /* ProfileTableViewCell.swift */,
 				74706057237DBDB300E5452F /* GroupSignUpViewController.swift */,
 				74706059237DBE5D00E5452F /* NextStepViewController.swift */,
 				7470603B237A518D00E5452F /* AppDelegate.swift */,
@@ -80,8 +83,8 @@
 				7470604F237A54E700E5452F /* FirstViewController.swift */,
 				7470605F237DCC8800E5452F /* Profile.swift */,
 				74706061237DFE6B00E5452F /* Profiles.swift */,
-				7470605D237DCC4200E5452F /* ProfileTableViewCell.swift */,
 				74706053237A559200E5452F /* SecondViewController.swift */,
+				747060632382048600E5452F /* IndividualSignUpViewController.swift */,
 				74706041237A518D00E5452F /* Main.storyboard */,
 				7470605B237DC57000E5452F /* FilterViewController.swift */,
 				74706044237A518F00E5452F /* Assets.xcassets */,
@@ -165,12 +168,13 @@
 				74706058237DBDB300E5452F /* GroupSignUpViewController.swift in Sources */,
 				7470605A237DBE5D00E5452F /* NextStepViewController.swift in Sources */,
 				74706054237A559200E5452F /* SecondViewController.swift in Sources */,
-				7470605E237DCC4200E5452F /* ProfileTableViewCell.swift in Sources */,
 				7470605C237DC57000E5452F /* FilterViewController.swift in Sources */,
 				74706040237A518D00E5452F /* ViewController.swift in Sources */,
 				7470603C237A518D00E5452F /* AppDelegate.swift in Sources */,
 				74706060237DCC8800E5452F /* Profile.swift in Sources */,
 				74706062237DFE6B00E5452F /* Profiles.swift in Sources */,
+				747060642382048600E5452F /* IndividualSignUpViewController.swift in Sources */,
+				746D4E112384BE92002F1BB8 /* ProfileTableViewCell.swift in Sources */,
 				7470603E237A518D00E5452F /* SceneDelegate.swift in Sources */,
 				74706050237A54E700E5452F /* FirstViewController.swift in Sources */,
 			);

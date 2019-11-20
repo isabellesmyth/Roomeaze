@@ -1,10 +1,11 @@
 //
-//  ProfileTableViewCell.swift
+//  ProfileTableViewCell1.swift
 //  RoomEaze
 //
-//  Created by Isabelle Smyth on 11/14/19.
+//  Created by Isabelle Smyth on 11/19/19.
 //  Copyright © 2019 Isabelle Smyth. All rights reserved.
 //
+
 
 import UIKit
 
@@ -14,22 +15,21 @@ class ProfileTableViewCell: UITableViewCell {
     @IBOutlet weak var groupName: UILabel!
     @IBOutlet weak var groupImage: UIImageView!
     @IBOutlet weak var numberNeeded: UILabel!
-    @IBOutlet weak var gSize: UILabel!
+    @IBOutlet weak var peopleNeeded: UILabel!
     @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var offCampusLabel: UILabel!
-    var profiles = Profiles()
+    var profile: Profile!
     func configureCell(profile: Profile) {
-        print("profiles configuring")
-        bio.text! = profile.pBio
-        groupName.text! = profile.groupName
-        numberNeeded.text! = profile.pOpen
-        groupImage.image = profile.pImage
-        if profile.pSize > 1 {
-            gSize.text = "Spots Open:"
-            
-        }
+        
+        bio.text = profile.pBio
+        groupName.text = profile.groupName
+     
+        peopleNeeded.text = profile.pOpen
+        
     }
-    }
+    
+    
+    
+}
 
 
 extension UIView {
@@ -37,8 +37,7 @@ extension UIView {
         self.layer.cornerRadius = CGFloat(cornerRadius)
         self.clipsToBounds = true
     }
-        
+    
 }
-
 
 
