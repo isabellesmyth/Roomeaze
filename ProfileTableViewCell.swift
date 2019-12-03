@@ -24,7 +24,7 @@ class ProfileTableViewCell: UITableViewCell {
         bio.text! = profile.pBio
         groupName.text! = profile.groupName
         numberNeeded.text! = profile.pOpen
-        groupImage.image = profile.pImage
+        groupImage.image = UIImage(named: profile.pImage)
         if profile.pSize > 1 {
             gSize.isHidden = false
             gSize.text = "Spots Open:"
@@ -33,10 +33,10 @@ class ProfileTableViewCell: UITableViewCell {
         if profile.pSize == 1 {
             gSize.isHidden = true
         }
-        if profile.campus != 1 {
+        if profile.campus != "On" {
             offCampusLabel.isHidden = true
         }
-        if profile.campus == 1 {
+        if profile.campus == "On" {
             offCampusLabel.isHidden = false
         }
     }

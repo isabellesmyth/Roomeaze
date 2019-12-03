@@ -24,7 +24,7 @@ class IndividualSignUpViewController: UIViewController {
     }
 
     @IBAction func nextPressed(_ sender: Any) {
-        pArrays.append(Profile(pBio: bio.text!, groupName: name.text!, pImage: UIImage(named: "1")!, pSize: 1, pOpen: "0", postingUserID: "123", documentID: "123", campus: Int(campus.selectedSegmentIndex), gender: (gender.titleForSegment(at: gender.selectedSegmentIndex)!), classY: Int(classYear.selectedSegmentIndex)))
+        
         }
     /*
     // MARK: - Navigation
