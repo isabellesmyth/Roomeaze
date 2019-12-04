@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		74239DB8239590FC00CD9D74 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 74239DB7239590FC00CD9D74 /* GoogleService-Info.plist */; };
+		7432D39E23975835005F4AC3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7432D39D23975835005F4AC3 /* SignUpViewController.swift */; };
+		7432D3A0239759DD005F4AC3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7432D39F239759DD005F4AC3 /* GoogleService-Info.plist */; };
 		745804B5238C77280048A041 /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745804B4238C77280048A041 /* ProfileDetailViewController.swift */; };
 		745804B7238C9C920048A041 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745804B6238C9C920048A041 /* PreferencesViewController.swift */; };
 		746D4E112384BE92002F1BB8 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746D4E102384BE92002F1BB8 /* ProfileTableViewCell.swift */; };
@@ -25,7 +27,6 @@
 		74706062237DFE6B00E5452F /* Profiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74706061237DFE6B00E5452F /* Profiles.swift */; };
 		747060642382048600E5452F /* IndividualSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747060632382048600E5452F /* IndividualSignUpViewController.swift */; };
 		74ADFB952396FE5D00616FED /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ADFB942396FE5D00616FED /* MemberTableViewCell.swift */; };
-		74ADFB972396FFE600616FED /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ADFB962396FFE600616FED /* SignUpViewController.swift */; };
 		74ADFB9B2397076500616FED /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ADFB9A2397076500616FED /* Filters.swift */; };
 		F6B244249009566FD1741C62 /* Pods_RoomEaze.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 424914FEDFF03E7CB25D4A8D /* Pods_RoomEaze.framework */; };
 /* End PBXBuildFile section */
@@ -34,6 +35,8 @@
 		17D3BDC531ACFEE147CD3AED /* Pods-RoomEaze.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RoomEaze.debug.xcconfig"; path = "Target Support Files/Pods-RoomEaze/Pods-RoomEaze.debug.xcconfig"; sourceTree = "<group>"; };
 		424914FEDFF03E7CB25D4A8D /* Pods_RoomEaze.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RoomEaze.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74239DB7239590FC00CD9D74 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7432D39D23975835005F4AC3 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = /Users/isabellesmyth/Desktop/Swift/RoomEaze/RoomEaze/SignUpViewController.swift; sourceTree = "<absolute>"; };
+		7432D39F239759DD005F4AC3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		745804B4238C77280048A041 /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
 		745804B6238C9C920048A041 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		746D4E102384BE92002F1BB8 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileTableViewCell.swift; path = ../ProfileTableViewCell.swift; sourceTree = "<group>"; };
@@ -53,7 +56,6 @@
 		74706061237DFE6B00E5452F /* Profiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profiles.swift; sourceTree = "<group>"; };
 		747060632382048600E5452F /* IndividualSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualSignUpViewController.swift; sourceTree = "<group>"; };
 		74ADFB942396FE5D00616FED /* MemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTableViewCell.swift; sourceTree = "<group>"; };
-		74ADFB962396FFE600616FED /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = ../../../../.Trash/SignUpViewController.swift; sourceTree = "<group>"; };
 		74ADFB9A2397076500616FED /* Filters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Filters.swift; path = /Users/isabellesmyth/Desktop/Swift/RoomEaze/RoomEaze/Filters.swift; sourceTree = "<absolute>"; };
 		7CE3875CE9B1701C971A9705 /* Pods-RoomEaze.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RoomEaze.release.xcconfig"; path = "Target Support Files/Pods-RoomEaze/Pods-RoomEaze.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,13 +111,13 @@
 			isa = PBXGroup;
 			children = (
 				74ADFB9A2397076500616FED /* Filters.swift */,
-				74ADFB962396FFE600616FED /* SignUpViewController.swift */,
 				74706057237DBDB300E5452F /* GroupSignUpViewController.swift */,
+				7432D39D23975835005F4AC3 /* SignUpViewController.swift */,
 				74ADFB942396FE5D00616FED /* MemberTableViewCell.swift */,
 				74706059237DBE5D00E5452F /* NextStepViewController.swift */,
-				745804B6238C9C920048A041 /* PreferencesViewController.swift */,
 				747060632382048600E5452F /* IndividualSignUpViewController.swift */,
 				7470604F237A54E700E5452F /* FirstViewController.swift */,
+				745804B4238C77280048A041 /* ProfileDetailViewController.swift */,
 				7470603B237A518D00E5452F /* AppDelegate.swift */,
 				746D4E102384BE92002F1BB8 /* ProfileTableViewCell.swift */,
 				7470603D237A518D00E5452F /* SceneDelegate.swift */,
@@ -126,8 +128,9 @@
 				7470605B237DC57000E5452F /* FilterViewController.swift */,
 				74706044237A518F00E5452F /* Assets.xcassets */,
 				74239DB7239590FC00CD9D74 /* GoogleService-Info.plist */,
+				7432D39F239759DD005F4AC3 /* GoogleService-Info.plist */,
+				745804B6238C9C920048A041 /* PreferencesViewController.swift */,
 				74706046237A518F00E5452F /* LaunchScreen.storyboard */,
-				745804B4238C77280048A041 /* ProfileDetailViewController.swift */,
 				74706049237A518F00E5452F /* Info.plist */,
 			);
 			path = RoomEaze;
@@ -196,6 +199,7 @@
 			files = (
 				74706048237A518F00E5452F /* LaunchScreen.storyboard in Resources */,
 				74239DB8239590FC00CD9D74 /* GoogleService-Info.plist in Resources */,
+				7432D3A0239759DD005F4AC3 /* GoogleService-Info.plist in Resources */,
 				74706045237A518F00E5452F /* Assets.xcassets in Resources */,
 				74706043237A518D00E5452F /* Main.storyboard in Resources */,
 			);
@@ -277,7 +281,7 @@
 				7470603C237A518D00E5452F /* AppDelegate.swift in Sources */,
 				74706060237DCC8800E5452F /* Profile.swift in Sources */,
 				74706062237DFE6B00E5452F /* Profiles.swift in Sources */,
-				74ADFB972396FFE600616FED /* SignUpViewController.swift in Sources */,
+				7432D39E23975835005F4AC3 /* SignUpViewController.swift in Sources */,
 				74ADFB952396FE5D00616FED /* MemberTableViewCell.swift in Sources */,
 				747060642382048600E5452F /* IndividualSignUpViewController.swift in Sources */,
 				746D4E112384BE92002F1BB8 /* ProfileTableViewCell.swift in Sources */,

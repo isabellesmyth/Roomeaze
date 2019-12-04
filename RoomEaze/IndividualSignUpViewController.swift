@@ -16,6 +16,7 @@ class IndividualSignUpViewController: UIViewController {
     @IBOutlet weak var classYear: UISegmentedControl!
     @IBOutlet weak var gender: UISegmentedControl!
     @IBOutlet weak var campus: UISegmentedControl!
+    var profile: Profile!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +25,26 @@ class IndividualSignUpViewController: UIViewController {
     }
 
     @IBAction func nextPressed(_ sender: Any) {
-        
+        profile.campus = campus.titleForSegment(at: campus.selectedSegmentIndex)!
+        profile.classY = classYear.selectedSegmentIndex
+        profile.groupName = name.text!
+        profile.pBio = bio.text
+        profile.pSize = 1
+        profile.pOpen = "0"
+        profile.gender = gender.titleForSegment(at: gender.selectedSegmentIndex)!
+        performSegue(withIdentifier: "IndividualDone", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as! FirstViewController
+        //let destination =  navigationController.viewControllers.first as! NextStepViewController
+        profile.saveData { (status) in
+            print(status)
         }
+        destination.profile = profile
+    }
+    
+    
     /*
     // MARK: - Navigation
 

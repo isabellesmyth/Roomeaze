@@ -10,17 +10,20 @@ import Foundation
 
 class Filters {
     var classYear: Int
-    var gender: String = ""
-    var campus: String = ""
+    var gender: Int
+    var campus: Int
     var groupSize: Int
-    var spotsOpen: String
+    var spotsOpen: Int
     
     
-    init(classYear: Int, gender: String, campus: String, groupSize: Int, spotsOpen: String) {
+    init(classYear: Int, gender: Int, campus: Int, groupSize: Int, spotsOpen: Int) {
         self.classYear = classYear
         self.gender = gender
         self.campus = campus
         self.groupSize = groupSize
         self.spotsOpen = spotsOpen
+    }
+    convenience init(){
+        self.init(classYear: 0, gender: 0, campus: 2, groupSize: 0, spotsOpen: 0)
     }
 }

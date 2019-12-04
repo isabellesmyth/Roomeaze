@@ -27,12 +27,18 @@ class FirstViewController: UIViewController {
         tableView.dataSource = self
         tableView.isHidden = true
         profiles = Profiles()
-        filter = Filters(classYear: 0, gender: "Female", campus: "Off", groupSize: "All", spotsOpen: 0)
+        filter = Filters(classYear: 0, gender: 0, campus: 1, groupSize: 0, spotsOpen: 0)
         tableView.delegate = self
         tableView.dataSource = self
         authUI = FUIAuth.defaultAuthUI()
         authUI?.delegate = self
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        profiles.loadData {
+            self.tableView.reloadData()
+        }
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -52,19 +58,19 @@ class FirstViewController: UIViewController {
             print("Error: couldn't sign out")
         }
         signIn()
-//        let db = Firestore.firestore()
-//        let userRef = db.collection("users").document()
-//        userRef.getDocument { (document, error) in
-//            guard error == nil else {
-//                print("error: could not access document")
-//                return
-//            }
-//            guard document?.exists == true else {
-//                performSegue(withIdentifier: "NewUser", sender: nil)
-//                print("^^^the document for user already exists, no need to create new one.")
-//                return
-//            }
-//        }
+        //        let db = Firestore.firestore()
+        //        let userRef = db.collection("users").document()
+        //        userRef.getDocument { (document, error) in
+        //            guard error == nil else {
+        //                print("error: could not access document")
+        //                return
+        //            }
+        //            guard document?.exists == true else {
+        //                performSegue(withIdentifier: "NewUser", sender: nil)
+        //                print("^^^the document for user already exists, no need to create new one.")
+        //                return
+        //            }
+        //        }
     }
     
     
@@ -86,19 +92,17 @@ class FirstViewController: UIViewController {
             //profile = Profile(user: currentUser!)
             tableView.isHidden = false
             transferData()
-           // profile.saveData { (status) in
+            checkIfNew()
+            // profile.saveData { (status) in
             //    print(status)
             //}
         }
-
-        
-        
         
     }
     func transferData(){
         let currentUser = authUI.auth?.currentUser
         let db = Firestore.firestore()
-               let docRef = db.collection("users").document((Auth.auth().currentUser?.email)!)
+        let docRef = db.collection("users").document((Auth.auth().currentUser?.email)!)
         docRef.getDocument { (document, error) in
             if let profile = document.flatMap({
                 $0.data().flatMap({ (data) in
@@ -130,7 +134,27 @@ class FirstViewController: UIViewController {
             let destination = segue.destination as! SignUpViewController
             destination.user = Auth.auth().currentUser!
         }
+        
+        if segue.identifier == "detailProfile" {
+            let destination = segue.destination as! ProfileDetailViewController
+            let selectedIndexPath = tableView.indexPathForSelectedRow!
+            destination.profile = profiles.profileArray[selectedIndexPath.row]
+           // print(destination.profile)
+    
+        } else {
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                tableView.deselectRow(at: selectedIndexPath, animated: true)
+            }
+        }
+        
+        
     }
+    
+    
+    func filterProfiles(){
+        
+    }
+    
     
 }
 extension FirstViewController: FUIAuthDelegate {
@@ -154,7 +178,7 @@ extension FirstViewController: FUIAuthDelegate {
         } else {
             signIn()
         }
-            
+        
         
         
     }
@@ -187,18 +211,13 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ProfileTableViewCell
         cell.cardView.applyConfig(for: indexPath, numberOfCellsInSection: tableView.numberOfRows(inSection: indexPath.section))
         cell.configureCell(profile: profiles.profileArray[indexPath.row])
-        if cell.numberNeeded.text == "0" {
-            cell.numberNeeded.isHidden = true
-        }
-        else {
-            cell.numberNeeded.isHidden = false
-        }
+        
         cell.cardView.roundCorners(cornerRadius: 20.0)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 100
     }
     
     

@@ -48,13 +48,16 @@ class NextStepViewController: UIViewController {
                 members.append(memberAdd)
             }
            profile.Members = members
-           performSegue(withIdentifier: "ToPreferences", sender: nil)
+           performSegue(withIdentifier: "GroupDone", sender: nil)
         }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination as! PreferencesViewController
+        let destination = segue.destination as! FirstViewController
         print(profile.Members)
         destination.profile = profile
+        profile.saveData { (status) in
+            print(status)
+        }
     }
 }
 
