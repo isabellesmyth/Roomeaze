@@ -1,0 +1,88 @@
+//
+//  EditMembersViewController.swift
+//  RoomEaze
+//
+//  Created by Isabelle Smyth on 12/5/19.
+//  Copyright © 2019 Isabelle Smyth. All rights reserved.
+//
+
+import UIKit
+
+class EditMembersViewController: UIViewController {
+        var profile: Profile!
+    var previousSize: Int!
+    var members = [String]()
+        var cellSpacingHeight: CGFloat = 5
+        @IBOutlet weak var membersTableView: UITableView!
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            membersTableView.dataSource = self
+            membersTableView.delegate = self
+           
+            // Do any additional setup after loading the view.
+        }
+       
+     
+        /*
+        // MARK: - Navigation
+
+        // In a storyboard-based application, you will often want to do a little preparation before navigation
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            // Get the new view controller using segue.destination.
+            // Pass the selected object to the new view controller.
+        }
+        */
+
+
+    @IBAction func nextButtonPressed(_ sender: UIButton) {
+                print("next button was pressed")
+                var members = [String]()
+                for c in 0..<profile.pSize{
+                    let cell = membersTableView.cellForRow(at: [c,0]) as! MemberTableViewCell
+                    var memberAdd = cell.memberName.text!
+                    members.append(memberAdd)
+                }
+               profile.Members = members
+            }
+        
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            let destination = segue.destination as! SecondViewController
+            destination.profile = profile
+            profile.saveData { (status) in
+                print(status)
+            }
+        }
+    }
+
+    extension EditMembersViewController: UITableViewDataSource, UITableViewDelegate {
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return 1
+        }
+        
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MemberCell", for: indexPath) as! MemberTableViewCell
+            if indexPath.section > previousSize - 1 {
+                cell.memberName.text = ""
+            } else {
+                cell.memberName.text = profile.Members[indexPath.section]
+            }
+            print("index path \(indexPath) section \(indexPath.section)")
+            cell.layer.cornerRadius = 8
+            return cell
+        }
+        func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+            let headerView = UIView()
+            headerView.backgroundColor = UIColor.clear
+            return headerView
+        }
+        
+        func numberOfSections(in tableView: UITableView) -> Int {
+            return profile.pSize
+        }
+
+        func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+            return cellSpacingHeight
+        }
+        
+
+}

@@ -27,18 +27,29 @@ class FirstViewController: UIViewController {
         tableView.dataSource = self
         tableView.isHidden = true
         profiles = Profiles()
-        filter = Filters(classYear: 0, gender: 0, campus: 1, groupSize: 0, spotsOpen: 0)
-        tableView.delegate = self
-        tableView.dataSource = self
+        filter = Filters(classYear: 0, gender: 2, campus: 2, groupSize: 0, spotsOpen: 0)
+ //       tableView.delegate = self
+   //     tableView.dataSource = self
         authUI = FUIAuth.defaultAuthUI()
         authUI?.delegate = self
         
+//        let tabBar = tabBarController as! TabBarController
+    //    tabBar.profile = self.profile
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
         profiles.loadData {
+            self.filterProfiles()
+            print("gender being filtered \(self.filter.gender)")
             self.tableView.reloadData()
         }
+        checkIfNew()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+      //  let tabbar = tabBarController as! TabBarController
+       // tabbar.profile = self.profile
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -106,10 +117,10 @@ class FirstViewController: UIViewController {
         docRef.getDocument { (document, error) in
             if let profile = document.flatMap({
                 $0.data().flatMap({ (data) in
-                    return Profile(dictionary: data)
+                    self.profile = Profile(dictionary: data)
                 })
             }) {
-                print("City: \(profile.groupName)")
+               
             } else {
                 print("Document does not exist")
             }
@@ -118,9 +129,9 @@ class FirstViewController: UIViewController {
     func checkIfNew(){
         let currentUser = authUI.auth?.currentUser
         let db = Firestore.firestore()
-        let docRef = db.collection("users").document((Auth.auth().currentUser?.email)!)
+        print("curent user \(Auth.auth().currentUser?.email)")
         if currentUser != nil {
-            
+            let docRef = db.collection("users").document((Auth.auth().currentUser?.email)!)
             docRef.getDocument { (document, error) in
                 if document!.exists == false{
                     self.performSegue(withIdentifier: "NewUser", sender: nil)
@@ -135,6 +146,15 @@ class FirstViewController: UIViewController {
             destination.user = Auth.auth().currentUser!
         }
         
+        if segue.identifier == "toFilters" {
+            let destinationNavigationController = segue.destination as! UINavigationController
+            let targetController = destinationNavigationController.topViewController as! FilterViewController
+            targetController.filter = self.filter
+            
+        }
+        
+
+        
         if segue.identifier == "detailProfile" {
             let destination = segue.destination as! ProfileDetailViewController
             let selectedIndexPath = tableView.indexPathForSelectedRow!
@@ -145,15 +165,92 @@ class FirstViewController: UIViewController {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 tableView.deselectRow(at: selectedIndexPath, animated: true)
             }
+   
         }
         
         
     }
     
+    @IBAction func unwindFromFilters(sender: UIStoryboardSegue) {
+        print(" gender \(filter.gender)")
+        print("unwindwing")
+        viewWillAppear(true)
+    }
+    
+    
     
     func filterProfiles(){
         
+        switch filter.campus {
+        case 0:
+            profiles.profileArray = profiles.profileArray.filter{$0.campus == "On"}
+        case 1:
+            profiles.profileArray = profiles.profileArray.filter{$0.campus == "Off"}
+        case 2:
+            print()
+        default:
+            print()
+        }
+        switch filter.classYear {
+        case 0:
+            profiles.profileArray = profiles.profileArray
+        case 1:
+            profiles.profileArray = profiles.profileArray.filter{$0.classY == 0}
+        case 2:
+            profiles.profileArray = profiles.profileArray.filter{$0.classY == 1}
+        case 3:
+            profiles.profileArray = profiles.profileArray.filter{$0.classY == 2}
+        case 4:
+            profiles.profileArray = profiles.profileArray.filter{$0.classY == 3}
+        default:
+            print()
+        }
+        switch filter.gender {
+            case 0:
+                profiles.profileArray = profiles.profileArray.filter{$0.gender == "Female"}
+            case 1:
+                profiles.profileArray = profiles.profileArray.filter{$0.gender == "Male"}
+        default:
+            print()
+        }
+        switch filter.groupSize {
+        case 0:
+            profiles.profileArray = profiles.profileArray
+        case 1:
+            profiles.profileArray = profiles.profileArray.filter{$0.pSize == 1}
+        case 2:
+            profiles.profileArray = profiles.profileArray.filter{$0.pSize == 2}
+        case 4:
+            profiles.profileArray = profiles.profileArray.filter{$0.pSize == 3}
+        case 5:
+            profiles.profileArray = profiles.profileArray.filter{$0.pSize == 4}
+        case 6:
+            profiles.profileArray = profiles.profileArray.filter{$0.pSize >= 5}
+
+        default:
+            profiles.profileArray = profiles.profileArray
+        }
+        switch filter.spotsOpen {
+        case 0:
+            profiles.profileArray = profiles.profileArray
+        case 1:
+            profiles.profileArray = profiles.profileArray.filter{$0.pOpen == "1"}
+        case 2:
+            profiles.profileArray = profiles.profileArray.filter{$0.pOpen == "2"}
+        case 4:
+            profiles.profileArray = profiles.profileArray.filter{$0.pOpen == "3"}
+        case 5:
+            profiles.profileArray = profiles.profileArray.filter{$0.pOpen == "4"}
+        case 6:
+            profiles.profileArray = profiles.profileArray.filter{$0.pOpen >= "5"}
+
+        default:
+            profiles.profileArray = profiles.profileArray
+        }
+
+        
     }
+       
     
     
 }
@@ -186,7 +283,7 @@ extension FirstViewController: FUIAuthDelegate {
     func authPickerViewController(forAuthUI authUI: FUIAuth) -> FUIAuthPickerViewController {
         let loginViewController = FUIAuthPickerViewController(authUI: authUI)
         loginViewController.view.backgroundColor = UIColor.white
-        
+        loginViewController.modalPresentationStyle = .fullScreen
         let marginInsets: CGFloat = 16
         let imageHeight: CGFloat = 225
         let imageY = self.view.center.y - imageHeight

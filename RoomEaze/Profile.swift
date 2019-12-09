@@ -13,7 +13,7 @@ import Firebase
 class Profile: NSObject{
     var pBio: String
     var groupName: String
-    var pImage: String
+    var subletSpot: Int
     var pSize: Int
     var pOpen: String
     var postingUserID: String
@@ -23,14 +23,15 @@ class Profile: NSObject{
     var classY: Int
     var Members: [String]
     var email: String
-    
+    var db: Firestore!
     var dictionary: [String: Any] {
-        return ["pBio": pBio, "groupName": groupName, "pImage": pImage, "pSize": pSize, "pOpen": pOpen, "postingUserID": postingUserID, "documentID": documentID, "campus": campus, "gender": gender, "classY": classY, "members": Members, "email": email]
+        return ["pBio": pBio, "groupName": groupName, "subletSpot": subletSpot, "pSize": pSize, "pOpen": pOpen, "postingUserID": postingUserID, "documentID": documentID, "campus": campus, "gender": gender, "classY": classY, "members": Members, "email": email]
     }
-    init(pBio: String, groupName: String, pImage: String, pSize: Int, pOpen: String, postingUserID: String, documentID: String, campus: String, gender: String, classY: Int, members: [String], email: String) {
+    
+    init(pBio: String, groupName: String, subletSpot: Int, pSize: Int, pOpen: String, postingUserID: String, documentID: String, campus: String, gender: String, classY: Int, members: [String], email: String) {
         self.pBio = pBio
         self.groupName = groupName
-        self.pImage = pImage
+        self.subletSpot = subletSpot
         self.pSize = pSize
         self.pOpen = pOpen
         self.postingUserID = postingUserID
@@ -42,14 +43,14 @@ class Profile: NSObject{
         self.email = email
     }
     convenience init(user: User){
-        print(user)
-        self.init(pBio: "", groupName: "", pImage: "", pSize: 0, pOpen: "", postingUserID: "", documentID: "", campus: "Off", gender: "", classY: 0, members: [String](), email: user.email!)
+        self.init(pBio: "", groupName: "", subletSpot: 1, pSize: 0, pOpen: "", postingUserID: "", documentID: "", campus: "Off", gender: "", classY: 0, members: [String](), email: user.email!)
     }
     convenience init(dictionary: [String: Any]) {
         let pBio = dictionary["pBio"] as! String? ?? ""
         let groupName = dictionary["groupName"] as! String? ?? ""
-        let pImage = dictionary["pImage"] as! String? ?? ""
+        //let pImage = dictionary["pImage"] as! String? ?? ""
         let pSize = dictionary["pSize"] as! Int? ?? 0
+        let subletSpot = dictionary["subletSpot"] as! Int? ?? 1
         let pOpen = dictionary["pOpen"] as! String? ?? ""
         let postingUserID = dictionary["postingUserID"] as! String? ?? ""
         let campus = dictionary["campus"] as! String? ?? ""
@@ -57,15 +58,33 @@ class Profile: NSObject{
         let gender = dictionary["gender"] as! String? ?? ""
         let members = dictionary["members"] as! [String] ?? [""]
         let email = dictionary["email"]
-        self.init(pBio: pBio, groupName: groupName, pImage: pImage, pSize: pSize, pOpen: pOpen, postingUserID: postingUserID, documentID: "", campus: campus, gender: gender, classY: classY, members: members, email: email as! String)
+        self.init(pBio: pBio, groupName: groupName, subletSpot: subletSpot, pSize: pSize, pOpen: pOpen, postingUserID: postingUserID, documentID: "", campus: campus, gender: gender, classY: classY, members: members, email: email as! String)
     }
+    func loadData(currentUser: User,completed: @escaping () -> ()) {
+//        db = Firestore.firestore()
+//        let document = db.collection("users").document(self.email).self
+//        let profile = Profile(dictionary: document.data())
+//
+//        completed()
+        
+        
+       
     
+    }
     func saveData(completed: @escaping (Bool) -> ()) {
         let db = Firestore.firestore()
+        let storage = Storage.storage()
         guard let postingUserID = (Auth.auth().currentUser?.uid) else {
             print("***ERROR: could not save data because we do not have a valid posting user id")
             return completed(false)
         }
+        //guard let photoData = UIImage(self.pImage).jpegData(compressionQuality: 0.5) else {
+         //   print("*****ERROR: could not convert image to data format")
+          //  return completed(false)
+       // }
+        //let storageRef = storage.reference().child(self.documentID)
+        //let uploadTask = storageRef.putData(photoData)
+        //documentUUID = UUID().uuidString
         self.postingUserID = postingUserID
         //create dict
         var dataToSave = self.dictionary
@@ -98,6 +117,7 @@ class Profile: NSObject{
                 
             }
         }
+        
     }
     
 //
@@ -129,4 +149,22 @@ class Profile: NSObject{
 //            }
 //        }
 //    }
+    
+    
+    
+    func deleteData(completed: @escaping (Bool) -> ()){
+        let db = Firestore.firestore()
+        db.collection("users").document((Auth.auth().currentUser?.email)!).delete()
+            {error in
+                if let error = error {
+                    print("🥵🥵🥵🥵Error deleting review documentid \(self.documentID) \(error.localizedDescription)")
+                    completed(false)
+                }
+                else {
+
+                    completed(true)
+                }
+        }
+        
+    }
 }

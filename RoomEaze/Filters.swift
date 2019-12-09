@@ -24,6 +24,6 @@ class Filters {
         self.spotsOpen = spotsOpen
     }
     convenience init(){
-        self.init(classYear: 0, gender: 0, campus: 2, groupSize: 0, spotsOpen: 0)
+        self.init(classYear: 0, gender: 2, campus: 2, groupSize: 0, spotsOpen: 0)
     }
 }

@@ -41,23 +41,34 @@ class NextStepViewController: UIViewController {
 
     @IBAction func nextButtonPressed(_ sender: UIButton) {
             print("next button was pressed")
-            var members = [String]()
-            for c in 0..<profile.pSize{
-                let cell = membersTableView.cellForRow(at: [c,0]) as! MemberTableViewCell
-                var memberAdd = cell.memberName.text!
-                members.append(memberAdd)
-            }
-           profile.Members = members
-           performSegue(withIdentifier: "GroupDone", sender: nil)
+            //dismiss(animated: false, completion: nil)
+            saveThenSegue()
+            
         }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination as! FirstViewController
-        print(profile.Members)
-        destination.profile = profile
+    func saveThenSegue(){
+        var members = [String]()
+        for c in 0..<profile.pSize{
+             let cell = membersTableView.cellForRow(at: [c,0]) as! MemberTableViewCell
+             var memberAdd = cell.memberName.text!
+             members.append(memberAdd)
+         }
+        profile.Members = members
+        performSegue(withIdentifier: "GroupDone", sender: nil)
+        
         profile.saveData { (status) in
             print(status)
         }
+       
+    }
+   
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       
+       // print(profile.Members)
+        
+       // profile.saveData { (status) in
+          //  print(status)
+       // }
+        //print("addig profile \(profile.documentID)")
     }
 }
 

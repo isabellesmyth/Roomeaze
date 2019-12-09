@@ -18,6 +18,8 @@ class ProfileDetailViewController: UIViewController {
     
     @IBOutlet weak var spotsOpen: UILabel!
     
+    @IBOutlet weak var spotsOpenLabel: UILabel!
+    @IBOutlet weak var groupSizeLabel: UILabel!
     @IBOutlet weak var gsize: UILabel!
     var profile: Profile!
     override func viewDidLoad() {
@@ -28,9 +30,31 @@ class ProfileDetailViewController: UIViewController {
         bio.text = profile.pBio
         spotsOpen.text = profile.pOpen
         gsize.text = String(profile.pSize)
+        if profile.pSize == 1 {
+            groupSizeLabel.isHidden = true
+            spotsOpenLabel.isHidden = true
+            spotsOpen.isHidden = true
+            gsize.isHidden = true
+           
+            
+        }
+        else {
+            groupSizeLabel.isHidden = false
+            spotsOpenLabel.isHidden = false
+            spotsOpen.isHidden = false
+            gsize.isHidden = false
+        }
         // Do any additional setup after loading the view.
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as! ChatViewController
+        destination.user2UID = profile.documentID
+        destination.user2Name = profile.groupName
+    }
     
+    @IBAction func messagePressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "message", sender: nil)
+    }
     
 }
 extension ProfileDetailViewController: UITableViewDelegate, UITableViewDataSource {
