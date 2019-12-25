@@ -32,6 +32,13 @@ class EditProfileViewController: UIViewController {
             
           
         }
+    @IBAction func userTappedBackground(sender: AnyObject) {
+      groupName.endEditing(true)
+        groupBio.endEditing(true)
+        groupSize.endEditing(true)
+        spotsOpen.endEditing(true)
+        
+    }
     override func viewWillAppear(_ animated: Bool) {
         
         classYear.selectedSegmentIndex = profile.classY

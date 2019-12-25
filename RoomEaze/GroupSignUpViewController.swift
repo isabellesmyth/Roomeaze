@@ -79,7 +79,20 @@ class GroupSignUpViewController: UIViewController {
         //let destination =  navigationController.viewControllers.first as! NextStepViewController
         destination.profile = profile
     }
+    
+    
+    
 
+    
+    
+
+    @IBAction func userTappedBackground(sender: AnyObject) {
+      groupName.endEditing(true)
+        groupBio.endEditing(true)
+        groupSize.endEditing(true)
+        spotsOpen.endEditing(true)
+        
+    }
 
     /*
     // MARK: - Navigation
@@ -90,5 +103,8 @@ class GroupSignUpViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
 
 }
+

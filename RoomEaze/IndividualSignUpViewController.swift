@@ -60,7 +60,11 @@ class IndividualSignUpViewController: UIViewController {
        // destination.profile = profile
     }
     
+    @IBAction func userTappedBackground(sender: AnyObject) {
+      name.endEditing(true)
+       bio.endEditing(true)
     
+    }
     /*
     // MARK: - Navigation
 
@@ -72,3 +76,4 @@ class IndividualSignUpViewController: UIViewController {
     */
 
 }
+

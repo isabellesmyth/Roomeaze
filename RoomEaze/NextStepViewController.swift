@@ -27,7 +27,10 @@ class NextStepViewController: UIViewController {
         membersTableView.delegate = self
         // Do any additional setup after loading the view.
     }
+   @IBAction func userTappedBackground(sender: AnyObject) {
+     membersTableView.endEditing(true)
    
+   }
  
     /*
     // MARK: - Navigation

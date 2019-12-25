@@ -1,16 +1,17 @@
 //
-//  MemberTableViewCell.swift
+//  MessageBoxTableViewCell.swift
 //  RoomEaze
 //
-//  Created by Isabelle Smyth on 12/3/19.
+//  Created by Isabelle Smyth on 12/24/19.
 //  Copyright © 2019 Isabelle Smyth. All rights reserved.
 //
 
 import UIKit
 
-class MemberTableViewCell: UITableViewCell {
+class MessageBoxTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var memberName: UITextField!
+    @IBOutlet weak var groupName: UILabel!
+    @IBOutlet weak var unreadLabel: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,7 +22,5 @@ class MemberTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-
 
 }

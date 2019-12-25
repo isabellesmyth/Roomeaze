@@ -15,7 +15,6 @@ class Filters {
     var groupSize: Int
     var spotsOpen: Int
     
-    
     init(classYear: Int, gender: Int, campus: Int, groupSize: Int, spotsOpen: Int) {
         self.classYear = classYear
         self.gender = gender

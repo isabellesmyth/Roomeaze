@@ -91,7 +91,7 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate,
                 else if queryCount >= 1 {
                     //Chat(s) found for currentUser
                     for doc in chatQuerySnap!.documents {
-                        
+                        let docID = doc.documentID
                         let chat = Chat(dictionary: doc.data())
                         //Get the chat which has user2 id
                         if (chat?.users.contains(self.user2UID!))! {
@@ -107,10 +107,18 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate,
                             } else {
                                 self.messages.removeAll()
                                     for message in threadQuery!.documents {
-
-                                        let msg = Message(dictionary: message.data())
+                                        var msg = Message(dictionary: message.data())
+                                        let ref = Firestore.firestore().collection("Chats").document(docID).collection("thread").document(message.documentID)
+                                        if msg?.recipientSeen == true {
+                                            if msg?.senderName != Auth.auth().currentUser?.displayName{
+                                            msg?.setSeen(ref: ref, completed: {
+                                                print("yay")
+                                            })
+                                            }
+                                        }
                                         self.messages.append(msg!)
                                         print("Data: \(msg?.content ?? "No message found")")
+                                        
                                     }
                                 self.messagesCollectionView.reloadData()
                                 self.messagesCollectionView.scrollToBottom(animated: true)
@@ -145,7 +153,8 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate,
             "created": message.created,
             "id": message.id,
             "senderID": message.senderID,
-            "senderName": message.senderName
+            "senderName": message.senderName,
+            "recipientSeen": message.recipientSeen
         ]
         
         docReference?.collection("thread").addDocument(data: data, completion: { (error) in
@@ -164,7 +173,7 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate,
     
             func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
 
-                let message = Message(id: UUID().uuidString, content: text, created: Timestamp(), senderID: currentUser.uid, senderName: currentUser.displayName!)
+                let message = Message(id: UUID().uuidString, content: text, created: Timestamp(), senderID: currentUser.uid, senderName: currentUser.displayName!, recipientSeen: false)
                 
                   //messages.append(message)
                   insertNewMessage(message)
@@ -178,7 +187,6 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate,
     
     // MARK: - MessagesDataSource
     func currentSender() -> SenderType {
-        
         return Sender(id: Auth.auth().currentUser!.email!, displayName: profile.groupName )
         
     }

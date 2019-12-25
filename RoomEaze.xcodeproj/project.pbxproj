@@ -33,6 +33,7 @@
 		749363AD239D7D3B0096BBAB /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749363AC239D7D3B0096BBAB /* Message.swift */; };
 		74ADFB952396FE5D00616FED /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ADFB942396FE5D00616FED /* MemberTableViewCell.swift */; };
 		74ADFB9B2397076500616FED /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ADFB9A2397076500616FED /* Filters.swift */; };
+		74C41E8E23B2D167004B61AD /* MessageBoxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C41E8D23B2D167004B61AD /* MessageBoxTableViewCell.swift */; };
 		74E6739A239999EC00974C03 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E67399239999EC00974C03 /* EditProfileViewController.swift */; };
 		74E6739C2399ADB100974C03 /* EditMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E6739B2399ADB100974C03 /* EditMembersViewController.swift */; };
 		74EF9FF9239ED07A00B7527E /* Chats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EF9FF8239ED07A00B7527E /* Chats.swift */; };
@@ -70,6 +71,7 @@
 		749363AC239D7D3B0096BBAB /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		74ADFB942396FE5D00616FED /* MemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTableViewCell.swift; sourceTree = "<group>"; };
 		74ADFB9A2397076500616FED /* Filters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Filters.swift; path = /Users/isabellesmyth/Desktop/Swift/RoomEaze/RoomEaze/Filters.swift; sourceTree = "<absolute>"; };
+		74C41E8D23B2D167004B61AD /* MessageBoxTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBoxTableViewCell.swift; sourceTree = "<group>"; };
 		74E67399239999EC00974C03 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		74E6739B2399ADB100974C03 /* EditMembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMembersViewController.swift; sourceTree = "<group>"; };
 		74EF9FF8239ED07A00B7527E /* Chats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chats.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				74706061237DFE6B00E5452F /* Profiles.swift */,
 				74706053237A559200E5452F /* SecondViewController.swift */,
 				74706041237A518D00E5452F /* Main.storyboard */,
+				74C41E8D23B2D167004B61AD /* MessageBoxTableViewCell.swift */,
 				744EB191239D8869002ED2BF /* MessageListViewController.swift */,
 				749363AA239D7D090096BBAB /* Chat.swift */,
 				74EF9FF8239ED07A00B7527E /* Chats.swift */,
@@ -304,6 +307,7 @@
 				745804B5238C77280048A041 /* ProfileDetailViewController.swift in Sources */,
 				741389CC239847AC000EBE5A /* TabBarController.swift in Sources */,
 				745804B7238C9C920048A041 /* PreferencesViewController.swift in Sources */,
+				74C41E8E23B2D167004B61AD /* MessageBoxTableViewCell.swift in Sources */,
 				74E6739A239999EC00974C03 /* EditProfileViewController.swift in Sources */,
 				749363A9239D7CC80096BBAB /* ChatViewController.swift in Sources */,
 				7470603C237A518D00E5452F /* AppDelegate.swift in Sources */,
